@@ -1,7 +1,7 @@
 import logging
 import os
 from logging.handlers import SMTPHandler, RotatingFileHandler
-from flask import Flask
+from flask import Flask, url_for
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -9,6 +9,8 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.add_url_rule('/favicon.ico',
+                 redirect_to=url_for('static', filename='favicon.ico'))
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
