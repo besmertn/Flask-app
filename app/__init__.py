@@ -9,8 +9,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.add_url_rule('/favicon.ico',
-                 redirect_to=url_for('static', filename='favicon.ico'))
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
